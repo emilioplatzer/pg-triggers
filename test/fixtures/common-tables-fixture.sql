@@ -1,6 +1,8 @@
 create table tri.people(
   name text primary key,
-  age integer
+  age integer,
+  quit timestamp with time zone,
+  active boolean default true
 );
 
 CREATE TRIGGER changes_trg
