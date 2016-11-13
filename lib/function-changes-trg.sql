@@ -4,8 +4,8 @@ create or replace function his.changes_trg()
 as
 $BODY$
 declare
-  -- p_primary_key_values text[]:=tg_argv[0];
-  p_primary_key_values text[]:=array['name'];
+  p_primary_key_values text[]:=regexp_split_to_array(tg_argv[0], ',');
+  -- p_primary_key_values text[]:=array['name'];
   v_new_pk jsonb;
   v_old_pk jsonb;
   v_new_value jsonb;

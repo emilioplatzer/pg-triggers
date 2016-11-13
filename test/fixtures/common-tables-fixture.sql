@@ -9,4 +9,4 @@ CREATE TRIGGER changes_trg
   AFTER INSERT OR UPDATE OR DELETE
   ON tri.people
   FOR EACH ROW
-  EXECUTE PROCEDURE his.changes_trg(/*array['name']*/);
+  EXECUTE PROCEDURE his.changes_trg('name');
