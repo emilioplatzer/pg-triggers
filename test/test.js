@@ -145,4 +145,21 @@ describe("triggers", function(){
             );
         });
     });
+    it("delete record", function(){
+        return local.db.query("SET application_name = 'this testing'").execute().then(function(){
+            return testQuery(
+                "DELETE FROM tri.people WHERE name='Mary'",
+                [changing(commonExpect,{
+                    cha_table:'people',
+                    cha_new_pk:null,
+                    cha_old_pk:{"name": "Mary"},
+                    cha_column:null,
+                    cha_op:'DELETE',
+                    cha_new_value:null,
+                    cha_old_value:{name:'Mary', age:21, active:false, quit:discrepances.test(likeNow)},
+                    cha_context:'this testing'
+                })]
+            );
+        });
+    });
 });
