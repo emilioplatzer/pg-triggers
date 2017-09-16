@@ -12,7 +12,7 @@
   "devDependencies": {
     "istanbul": "~0.4.5",
     "mocha": "~3.5.3",
-    
+    "best-globals": "~0.10.1",
     "discrepances": "~0.2.2",
     "mini-tools": "~0.3.18",
     "pg-promise-strict": "~0.4.1"

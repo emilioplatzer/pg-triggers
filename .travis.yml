@@ -12,6 +12,6 @@ sudo: required
 addons:
   postgresql: "9.5"
 before_script:
-  - psql -c 'create user test_user password $$test_pass$$;' -U postgres
+  - psql -c 'create user codenautas_user password $$test_pass$$;' -U postgres
   - psql -c 'create database test_db owner test_user;' -U postgres
   - cp travis-test-config.yaml local-config.yaml
