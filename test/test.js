@@ -55,16 +55,7 @@ describe("triggers", function(){
         }).then(function(){
             return local.db.query("SELECT * FROM his.changes ORDER BY cha_when, cha_schema, cha_table, cha_column").fetchAll();
         }).then(function(result){
-            var diffs = discrepances(result.rows, expectedValues, {duckTyping:true});
-            if(diffs){
-                console.log('DISCREPANCES');
-                /*
-                console.dir(result.rows, {depth:6});
-                console.dir(expectedValues, {depth:6});
-                */
-                console.dir(diffs, {depth:6});
-                throw new Error("discrepances");
-            }
+            discrepances.showAndThrow(result.rows, expectedValues, {duckTyping:true});
         });
     };
     var commonExpect={
