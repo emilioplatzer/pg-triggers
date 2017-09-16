@@ -1,0 +1,6 @@
+db:
+  motor: postgresql
+  database: test_db
+  user: test_user
+  password: test_pass
+  schema: tri

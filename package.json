@@ -1,23 +1,21 @@
 {
   "name": "pg-triggers",
   "description": "Triggers for postgres",
-  "version": "0.0.1",
-  "author": "Codenautas <codenautas@googlegroups.com>",
-  "repository": "codenautas/pg-triggers",
+  "version": "0.1.0",
+  "author": "Emilio Platzer <emilioplatzer@gmail.com>",
+  "repository": "emilioplatzer/pg-triggers",
   "license": "MIT",
   "main": "index.js",
   "files": [],
   "dependencies": {
   },
   "devDependencies": {
-    "fs-extra": "~1.0.0",
-    "fs-promise": "~1.0.0",
     "istanbul": "~0.4.5",
-    "mocha": "~3.1.2",
+    "mocha": "~3.5.3",
     
-    "discrepances": "~0.0.8",
-    "mini-tools": "~0.3.5",
-    "pg-promise-strict": "~0.2.5"
+    "discrepances": "~0.2.2",
+    "mini-tools": "~0.3.18",
+    "pg-promise-strict": "~0.4.1"
   },
   "engines": {
     "node": ">= 6"

@@ -1,11 +1,18 @@
 language: node_js
 node_js:
-  - "0.12.7"
   - "4"
   - "6"
+  - "8"
 matrix:
   fast_finish: true
-  allow_failures:
-    - node_js: "6" 
 script: "npm run-script test-ci"
 after_script: "npm install coveralls@2.11.8 && cat ./coverage/lcov.info | coveralls"
+dist: trusty
+sudo: required
+addons:
+  postgresql: "9.5"
+before_script:
+  - psql -c 'create user test_user password $$test_pass$$;' -U postgres
+  - psql -c 'create database test_db owner test_user;' -U postgres
+  - psql -U postgres -f test/populate_db.sql test_db
+  - cp travis-test-config.yaml local-config.yaml
