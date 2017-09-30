@@ -1,6 +1,7 @@
 create or replace function his.changes_trg() 
   returns trigger
   language plpgsql
+  security definer
 as
 $BODY$
 declare
@@ -46,15 +47,15 @@ begin
       end if;
       if v_new_value is distinct from v_old_value then
         insert into "his".changes 
-          (cha_schema     , cha_table    , cha_new_pk, cha_old_pk, cha_column, cha_op, cha_new_value, cha_old_value, cha_who, cha_when         , cha_context) values
-          (tg_table_schema, tg_table_name, v_new_pk  , v_old_pk  , v_column  , tg_op , v_new_value  , v_old_value  , user   , clock_timestamp(), v_context  );
+          (cha_schema     , cha_table    , cha_new_pk, cha_old_pk, cha_column, cha_op, cha_new_value, cha_old_value, cha_who      , cha_when         , cha_context) values
+          (tg_table_schema, tg_table_name, v_new_pk  , v_old_pk  , v_column  , tg_op , v_new_value  , v_old_value  , session_user , clock_timestamp(), v_context  );
       end if;
     end loop;
     return new;
   else
     insert into "his".changes 
-      (cha_schema     , cha_table    , cha_old_pk, cha_op, cha_old_value, cha_who, cha_when         , cha_context) values
-      (tg_table_schema, tg_table_name, v_old_pk  , tg_op , v_old_values , user   , clock_timestamp(), v_context  );
+      (cha_schema     , cha_table    , cha_old_pk, cha_op, cha_old_value, cha_who      , cha_when         , cha_context) values
+      (tg_table_schema, tg_table_name, v_old_pk  , tg_op , v_old_values , session_user , clock_timestamp(), v_context  );
     return null;
   end if;
 end;
