@@ -7,6 +7,8 @@ var discrepances = require("discrepances");
 var miniTools = require("mini-tools");
 var pg = require("pg-promise-strict");
 pg.easy = true;
+pg.log = pg.logLastError;
+pg.log.inFileName = 'last-pg-error-local.sql'
 
 function autoprops(object, names){
     var nameList=typeof names === "string" ? names.split(/,\s*/) : names;
@@ -37,6 +39,8 @@ describe("triggers", function(){
             return pg.connect(local.config.db);
         }).then(local.db.get).then(function(){
             return local.db.executeSqlScript("test/fixtures/common-schemas-fixture.sql");
+        }).then(function(){
+            return local.db.executeSqlScript("lib/recreate-his.sql");
         }).then(function(){
             return local.db.executeSqlScript("lib/table-changes.sql");
         }).then(function(){

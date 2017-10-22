@@ -1,5 +1,3 @@
-create schema his;
-
 create table his."changes"(
   cha_schema text,
   cha_table text,
