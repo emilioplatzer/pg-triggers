@@ -53,6 +53,10 @@ describe("triggers", function(){
             throw err;
         });
     });
+    after(function(){
+        local.db.done();
+        console.log('after:...done!');
+    });
     function testQuery(sql, expectedValues){
         return local.db.query("DELETE FROM his.changes").execute().then(function(){
             return local.db.query(sql).execute();
