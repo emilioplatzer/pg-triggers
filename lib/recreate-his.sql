@@ -7,7 +7,7 @@ DROP TABLE IF EXISTS his."changes"; /* DONT ADD CASCADE HERE */
 DO language plpgsql
 $DO$
 BEGIN
-  DROP SCHEMA his;
+  DROP SCHEMA IF EXISTS his;
   EXCEPTION 
     WHEN dependent_objects_still_exist THEN
       RAISE NOTICE 'skipping DROP SCHEMA HIS because dependent_objects_still_exist';
