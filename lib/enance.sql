@@ -1,5 +1,5 @@
 create or replace function enance_table(table_name text, primary_key_fields text) returns text
-  language plpgsql as
+  language plpgsql security definer as
 $BODY$
 declare
   v_sql text;
