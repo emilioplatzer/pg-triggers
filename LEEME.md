@@ -28,7 +28,37 @@ también disponible en:
 # Install
 [!--lang:*-->
 ```sh
+$ psql < lib/recreate-his.sql
+$ psql < lib/table-changes.sql
+$ psql < lib/function-changes-trg.sql
+```
+
+<!--lang:es-->
+# Configuración
+<!--lang:en--]
+# Config
+[!--lang:*-->
+```sh
+$ psql < lib/enance.sql
+$ psql -c "select enance_table('state','country,state')"
+```
+<!--lang:es-->
+La función `enance_table` recibe el nombre de una tabla y los nombres de los campos de su clave primary y crean los triggers necesarios.
+
+Debe llamarse a la función para cada tabla a la que se desee agregarle auditoría.
+
+Se puede borrar la función enance_tables una vez terminada la configuración. Si alguna tabla cambia su clave principal debe llamarse nuevamene a la función `enance_table`
+<!--lang:en--]
+You must call enance_table(table_name, primary_key_fields) for each table that you want to audit changes on each time you create a table or alter the primary key. 
+
+<!--lang:es-->
+# Desarrollo
+<!--lang:en--]
+# Devel
+[!--lang:*-->
+```sh
 $ npm install pg-triggers
+$ npm test
 ```
 
 <!--lang:es-->
