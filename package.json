@@ -1,7 +1,7 @@
 {
   "name": "pg-triggers",
   "description": "Triggers for postgres",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "author": "Emilio Platzer <emilioplatzer@gmail.com>",
   "repository": "emilioplatzer/pg-triggers",
   "license": "MIT",
@@ -11,12 +11,11 @@
   ],
   "dependencies": {},
   "devDependencies": {
-    "istanbul": "~0.4.5",
-    "mocha": "~5.2.0",
-    "best-globals": "~0.10.4",
-    "discrepances": "~0.2.3",
-    "mini-tools": "~1.0.2",
-    "pg-promise-strict": "~0.4.13"
+    "mocha": "~6.0.2",
+    "best-globals": "~0.10.10",
+    "discrepances": "~0.2.4",
+    "mini-tools": "~1.0.5",
+    "pg-promise-strict": "~0.4.18"
   },
   "engines": {
     "node": ">= 6"
@@ -24,8 +23,6 @@
   "scripts": {
     "start": "node example/server.js",
     "test": "mocha --reporter spec --bail --check-leaks test/",
-    "test-ci": "istanbul cover node_modules/mocha/bin/_mocha --report lcovonly -- --reporter spec --check-leaks test/",
-    "test-cov": "istanbul cover node_modules/mocha/bin/_mocha -- --reporter dot --check-leaks test/",
     "test-nc": "mocha --reporter spec --bail --check-leaks --no-colors test/"
   },
   "qa-control": {
