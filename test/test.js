@@ -61,7 +61,7 @@ describe("triggers", function(){
         return local.db.query("DELETE FROM his.changes").execute().then(function(){
             return local.db.query(sql).execute();
         }).then(function(){
-            return local.db.query("SELECT * FROM his.changes ORDER BY cha_when, cha_schema, cha_table, cha_column").fetchAll();
+            return local.db.query("SELECT * FROM his.changes ORDER BY cha_schema, cha_table, cha_new_pk, cha_column, cha_new_value").fetchAll();
         }).then(function(result){
             discrepances.showAndThrow(result.rows, expectedValues, {duckTyping:true});
         });
@@ -80,15 +80,15 @@ describe("triggers", function(){
             [changing(commonExpect,{
                 cha_table:'people',
                 cha_new_pk:{"name": "Bob"},
-                cha_column:'name',
-                cha_op:'INSERT',
-                cha_new_value:'Bob',
-            }),changing(commonExpect,{
-                cha_table:'people',
-                cha_new_pk:{"name": "Bob"},
                 cha_column:'active',
                 cha_op:'INSERT',
                 cha_new_value:true,
+            }), changing(commonExpect,{
+                cha_table:'people',
+                cha_new_pk:{"name": "Bob"},
+                cha_column:'name',
+                cha_op:'INSERT',
+                cha_new_value:'Bob',
             })]
         );
     });
@@ -127,18 +127,18 @@ describe("triggers", function(){
                     cha_table:'people',
                     cha_new_pk:{"name": "Mary"},
                     cha_old_pk:{"name": "Mary"},
-                    cha_column:'quit',
-                    cha_op:'UPDATE',
-                    cha_new_value:discrepances.test(likeNow),
-                    cha_context:'this testing'
-                }),changing(commonExpect,{
-                    cha_table:'people',
-                    cha_new_pk:{"name": "Mary"},
-                    cha_old_pk:{"name": "Mary"},
                     cha_column:'active',
                     cha_op:'UPDATE',
                     cha_new_value:false,
                     cha_old_value:true,
+                    cha_context:'this testing'
+                }), changing(commonExpect,{
+                    cha_table:'people',
+                    cha_new_pk:{"name": "Mary"},
+                    cha_old_pk:{"name": "Mary"},
+                    cha_column:'quit',
+                    cha_op:'UPDATE',
+                    cha_new_value:discrepances.test(likeNow),
                     cha_context:'this testing'
                 })]
             );
