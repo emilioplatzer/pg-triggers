@@ -35,7 +35,8 @@ describe("triggers", function(){
         return miniTools.readConfig([
             "def-config",
             "local-config",
-        ],{readConfig:{whenNotExist:'ignore'}, testing:true}).then(local.config.get).then(function(){
+            {testing:true}
+        ],{whenNotExist:'ignore'}).then(local.config.get).then(function(){
             return pg.connect(local.config.db);
         }).then(local.db.get).then(function(){
             return local.db.executeSqlScript("test/fixtures/common-schemas-fixture.sql");
