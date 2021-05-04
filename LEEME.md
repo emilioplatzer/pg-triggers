@@ -48,6 +48,8 @@ La función `enance_table` recibe el nombre de una tabla y los nombres de los ca
 Debe llamarse a la función para cada tabla a la que se desee agregarle auditoría.
 
 Se puede borrar la función enance_tables una vez terminada la configuración. Si alguna tabla cambia su clave principal debe llamarse nuevamene a la función `enance_table`
+
+Existe la alternativa enance_table_ud la cual no audita inserciones (solo audita cambios de update y delete)
 <!--lang:en--]
 You must call enance_table(table_name, primary_key_fields) for each table that you want to audit changes on each time you create a table or alter the primary key. 
 
