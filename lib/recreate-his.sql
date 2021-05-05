@@ -1,5 +1,4 @@
 DROP FUNCTION IF EXISTS enance_table(text, text);
-DROP FUNCTION IF EXISTS enance_table_ud(text, text);
 
 DROP FUNCTION IF EXISTS his.changes_trg() /*CASCADE*/ /* REGEXP SECURE ADDABLE CASCADE */;
 

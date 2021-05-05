@@ -28,7 +28,8 @@ $ psql < lib/enance.sql
 $ psql -c "select enance_table('state','country,state')"
 ```
 You must call enance_table(table_name, primary_key_fields) for each table that you want to audit changes on each time you create a table or alter the primary key.
-enance_table_ud just listen for update or delete changes (ignores inserts)
+By default the function will audit inserts, updates and deletes. But exists a third parameter **method** (optional). If this param receives the 'ud' value won't audit inserts
+(only will listen for updates and deletes)
 
 # Devel
 ```sh
