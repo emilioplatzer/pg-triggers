@@ -27,9 +27,12 @@ describe("triggers", async ()=>{
             db = await pg.connect(config.db);
             await db.executeSqlScript("test/fixtures/common-schemas-fixture.sql");
             await db.executeSqlScript("lib/recreate-his.sql");
+            await db.query(`set search_path = tri;`).execute();
+            await db.executeSqlScript("lib/enance.sql");
             await db.executeSqlScript("lib/table-changes.sql");
             await db.executeSqlScript("lib/function-changes-trg.sql");
             await db.executeSqlScript("test/fixtures/common-tables-fixture.sql");
+            await db.query(`select enance_table('people','name');`).execute();
         }catch(err){
             console.log(err);
             console.log(err.stack);
