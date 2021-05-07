@@ -5,7 +5,7 @@ declare
   v_sql text;
 begin
   v_sql=replace($sql$
-    DROP TRIGGER IF EXISTS changes_trg ON table_name
+    DROP TRIGGER IF EXISTS changes_trg ON table_name;
     DROP TRIGGER IF EXISTS changes_ud_trg ON table_name
   $sql$
     ,'table_name', table_name);
