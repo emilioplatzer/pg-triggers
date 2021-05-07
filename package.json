@@ -11,7 +11,7 @@
   ],
   "dependencies": {},
   "devDependencies": {
-    "mocha": "~8.3.2",
+    "mocha": "~8.4.0",
     "nyc": "~15.1.0",
     "best-globals": "~0.10.32",
     "discrepances": "~0.2.6",
