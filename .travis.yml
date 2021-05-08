@@ -11,17 +11,17 @@ sudo: required
 services:
   - postgresql
 addons:
-  postgresql: "12"
+  postgresql: "11"
   apt:
     packages:
-    - postgresql-12
-    - postgresql-client-12
+    - postgresql-11
+    - postgresql-client-11
 env:
   global:
   - PGPORT=54312
 before_script:
-  - psql --cluster 12/main -c 'create user codenautas_user password $$test_pass$$;' -U postgres
-  - psql --cluster 12/main -c 'create database test_db owner codenautas_user;' -U postgres
+  - psql --cluster 11/main -c 'create user codenautas_user password $$test_pass$$;' -U postgres
+  - psql --cluster 11/main -c 'create database test_db owner codenautas_user;' -U postgres
   - psql -c 'create user codenautas_user password $$test_pass$$;' -U postgres
   - psql -c 'create database test_db owner codenautas_user;' -U postgres
   - cp travis-test-config.yaml local-config.yaml
