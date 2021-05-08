@@ -1,7 +1,7 @@
 {
   "name": "pg-triggers",
   "description": "Triggers for postgres",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "author": "Emilio Platzer <emilioplatzer@gmail.com>",
   "repository": "emilioplatzer/pg-triggers",
   "license": "MIT",
@@ -11,7 +11,7 @@
   ],
   "dependencies": {},
   "devDependencies": {
-    "mocha": "~8.3.2",
+    "mocha": "~8.4.0",
     "nyc": "~15.1.0",
     "best-globals": "~0.10.32",
     "discrepances": "~0.2.6",
@@ -19,7 +19,7 @@
     "pg-promise-strict": "~1.2.4"
   },
   "engines": {
-    "node": ">= 6"
+    "node": ">= 16"
   },
   "scripts": {
     "start": "node example/server.js",

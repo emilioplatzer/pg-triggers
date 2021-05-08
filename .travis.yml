@@ -1,7 +1,7 @@
 language: node_js
 node_js:
-  - "8"
-  - "10"
+  - "14"
+  - "16"
 matrix:
   fast_finish: true
 script: "npm run-script test-ci"
@@ -9,7 +9,7 @@ after_script: "npm install coveralls@2.11.8 && cat ./coverage/lcov.info | covera
 dist: trusty
 sudo: required
 addons:
-  postgresql: "9.5"
+  postgresql: "12"
 before_script:
   - psql -c 'create user codenautas_user password $$test_pass$$;' -U postgres
   - psql -c 'create database test_db owner codenautas_user;' -U postgres
