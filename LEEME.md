@@ -60,6 +60,7 @@ You must call enance_table(table_name, primary_key_fields) for each table that y
 [!--lang:*-->
 ```sh
 $ npm install pg-triggers
+$ psql --file intall/create_db.sql
 $ npm test
 ```
 
