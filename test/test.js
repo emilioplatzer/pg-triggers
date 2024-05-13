@@ -39,11 +39,13 @@ describe("triggers", async ()=>{
             throw err;
         }
     });
-    after(function(){
+    after(async function(){
         if(db){
-            db.done();
+            await db.done();
             console.log('after:...done!');
         }
+        await pg.shutdown();
+        console.log('pg:...down!');
     });
     async function testQuery(sql, expectedValues){
         await db.query("DELETE FROM his.changes").execute();
