@@ -1,11 +1,12 @@
 {
   "name": "pg-triggers",
   "description": "Triggers for postgres",
-  "version": "0.4.0",
+  "version": "0.4.2",
   "author": "Emilio Platzer <emilioplatzer@gmail.com>",
   "repository": "emilioplatzer/pg-triggers",
   "license": "MIT",
-  "main": "index.js",
+  "main": "lib/pg-triggers.js",
+  "types": "lib/pg-triggers.d.ts",
   "files": [
     "lib"
   ],

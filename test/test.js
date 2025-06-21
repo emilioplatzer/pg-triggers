@@ -36,7 +36,7 @@ describe("audit triggers", async ()=>{
             await db.executeSqlScript("test/fixtures/common-tables-fixture.sql");
             await db.query(`select enance_table('people','name');`).execute();
             await db.executeSentences(
-                (await pgTriggers.table_name_max_id_trg('animal', 'id')).split(/\r?\n\r?\n/)
+                (await pgTriggers.dumpMaxIdTrigger('animal', 'id')).split(/\r?\n\r?\n/)
             )
         }catch(err){
             console.log(err);
