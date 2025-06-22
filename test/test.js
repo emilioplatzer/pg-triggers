@@ -37,7 +37,10 @@ describe("audit triggers", async ()=>{
             await db.query(`select enance_table('people','name');`).execute();
             await db.executeSentences(
                 (await pgTriggers.dumpMaxIdTrigger('animal', 'id')).split(/\r?\n\r?\n/)
-            )
+            );
+            await db.executeSentences(
+                (await pgTriggers.dumpMaxIdTrigger('food', 'id', {grouping:['id_animal'], firstId: 2})).split(/\r?\n\r?\n/)
+            );
         }catch(err){
             console.log(err);
             console.log(err.stack);
@@ -166,6 +169,26 @@ describe("audit triggers", async ()=>{
                 }],
                 'tri.animal',
                 'id'
+            );
+        });
+        it("auto pk (grouped)", async ()=>{
+            await testQuery(
+                "INSERT INTO tri.food(id_animal, food) values (1, 'tuna'),(1,'chicken'),(2,'beef');",
+                [{
+                    id_animal: 2,
+                    id: 2,
+                    food: 'beef',
+                },{
+                    id_animal: 1,
+                    id: 3,
+                    food: 'chicken',
+                },{
+                    id_animal: 1,
+                    id: 2,
+                    food: 'tuna',
+                }],
+                'tri.food',
+                'food'
             );
         });
     })
