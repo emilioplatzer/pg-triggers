@@ -1,7 +1,7 @@
 {
   "name": "pg-triggers",
   "description": "Triggers for postgres",
-  "version": "0.4.5",
+  "version": "0.4.6",
   "author": "Emilio Platzer <emilioplatzer@gmail.com>",
   "repository": "emilioplatzer/pg-triggers",
   "license": "MIT",
