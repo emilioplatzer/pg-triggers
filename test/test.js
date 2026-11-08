@@ -193,3 +193,31 @@ describe("audit triggers", async ()=>{
         });
     })
 });
+
+describe("dumpMaxIdTrigger firstId", ()=>{
+    var assert = require("assert"); // eslint-disable-line global-require
+    it("uses a numeric firstId", async ()=>{
+        var sql = await pgTriggers.dumpMaxIdTrigger('food', 'id', {firstId: 7});
+        assert.ok(sql.includes('coalesce(v_curr_max + 1, 7)'));
+    });
+    it("uses a string firstId that is a number", async ()=>{
+        var sql = await pgTriggers.dumpMaxIdTrigger('food', 'id', {firstId: '7'});
+        assert.ok(sql.includes('coalesce(v_curr_max + 1, 7)'));
+    });
+    it("uses 1 when there is no firstId", async ()=>{
+        var sql = await pgTriggers.dumpMaxIdTrigger('food', 'id');
+        assert.ok(sql.includes('coalesce(v_curr_max + 1, 1)'));
+    });
+    it("rejects a firstId that is not a number", async ()=>{
+        await assert.rejects(
+            pgTriggers.dumpMaxIdTrigger('food', 'id', {firstId: '1); drop table food; --'}),
+            /pg-triggers: firstId must be a number/
+        );
+    });
+    it("keeps a $ of the names as is", async ()=>{
+        var sql = await pgTriggers.dumpMaxIdTrigger('pre$&cios', 'id$`x', {grouping:["g$'1"]});
+        assert.ok(sql.includes('from "pre$&cios" x'));
+        assert.ok(sql.includes('select max("id$`x")'));
+        assert.ok(sql.includes('where x."g$\'1" = new."g$\'1"'));
+    });
+});
