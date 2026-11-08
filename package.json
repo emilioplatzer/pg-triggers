@@ -17,14 +17,13 @@
     "best-globals": "^2.2.3",
     "discrepances": "^0.3.3",
     "mini-tools": "^1.13.14",
-    "pg-promise-strict": "^1.7.1",
-    "qa-control": "^0.14.3"
+    "pg-promise-strict": "^1.7.2",
+    "qa-control": "^0.15.0"
   },
   "engines": {
     "node": ">= 16"
   },
   "scripts": {
-    "start": "node example/server.js",
     "test": "mocha --reporter spec --bail --check-leaks test/",
     "test-nc": "mocha --reporter spec --bail --check-leaks --no-colors test/",
     "test-ci": "nyc node_modules/mocha/bin/_mocha --report lcovonly -- --reporter spec --check-leaks test/"
@@ -32,8 +31,8 @@
   "qa-control": {
     "coverage": 90,
     "run-in": "server",
-    "type": "cmd-tool",
-    "gha": "all",
+    "type": "lib",
+    "gha": {"postgres": "lts"},
     "sonar": true
   }
 }

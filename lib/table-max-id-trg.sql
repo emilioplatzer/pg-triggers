@@ -15,7 +15,7 @@ begin
 end;
 $body$;
 
-create trigger "table_name_max_id_trg" 
+create trigger "table_name_max_id_trg"
   before insert
   on "table_name"
   for each row execute function "table_name_max_id_trg"();

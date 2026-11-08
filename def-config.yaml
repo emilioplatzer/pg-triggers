@@ -1,6 +1,6 @@
 db:
   motor: postgresql
-  database: test_codenautas_db
-  user: codenautas_user
-  password: example3092929
+  database: test_db
+  user: test_user
+  password: test_pass
   schema: tri

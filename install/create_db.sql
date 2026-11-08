@@ -1,2 +1,2 @@
-create user codenautas_user password 'example3092929';
-create database test_codenautas_db with owner = codenautas_user;
+create user test_user password 'test_pass';
+create database test_db with owner = test_user;

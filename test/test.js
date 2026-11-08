@@ -12,13 +12,14 @@ pg.log.inFileName = 'last-pg-error-local.sql'
 var pgTriggers = require("../lib/pg-triggers.js");
 
 function isDate(x){ return x instanceof Date; }
-function likeNow(str){ 
+function likeNow(str){
     var d=new Date(str);
     return Math.abs(new Date() - d)<10000;
 }
 
 describe("audit triggers", async ()=>{
     var db;
+    var dbUser;
     before(async ()=>{
         var config = await miniTools.readConfig([
             "def-config",
@@ -26,6 +27,7 @@ describe("audit triggers", async ()=>{
             {testing:true}
         ],{whenNotExist:'ignore'})
         try{
+            dbUser = config.db.user;
             db = await pg.connect(config.db);
             await db.executeSqlScript("test/fixtures/common-schemas-fixture.sql");
             await db.executeSqlScript("lib/recreate-his.sql");
@@ -65,7 +67,7 @@ describe("audit triggers", async ()=>{
         cha_schema:'tri',
         cha_old_pk:null,
         cha_old_value:null,
-        cha_who:'codenautas_user',
+        cha_who:discrepances.test(function(who){ return who === dbUser; }),
         cha_when:discrepances.test(isDate),
         cha_context:null
     };

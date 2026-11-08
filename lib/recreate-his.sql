@@ -9,7 +9,7 @@ DO language plpgsql
 $DO$
 BEGIN
   DROP SCHEMA IF EXISTS his;
-  EXCEPTION 
+  EXCEPTION
     WHEN dependent_objects_still_exist THEN
       RAISE NOTICE 'skipping DROP SCHEMA HIS because dependent_objects_still_exist';
 END;

@@ -1,7 +1,0 @@
-db:
-  motor: postgresql
-  database: test_db
-  user: codenautas_user
-  password: test_pass
-  port: 54312
-  schema: tri
