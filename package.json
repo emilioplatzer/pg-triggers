@@ -1,7 +1,7 @@
 {
   "name": "pg-triggers",
   "description": "Triggers for postgres",
-  "version": "0.4.6",
+  "version": "0.4.7",
   "author": "Emilio Platzer <emilioplatzer@gmail.com>",
   "repository": "emilioplatzer/pg-triggers",
   "license": "MIT",
@@ -32,7 +32,9 @@
     "coverage": 90,
     "run-in": "server",
     "type": "lib",
-    "gha": {"postgres": "lts"},
+    "gha": {
+      "postgres": "lts"
+    },
     "sonar": true
   }
 }
