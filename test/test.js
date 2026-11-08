@@ -60,7 +60,7 @@ describe("audit triggers", async ()=>{
         await db.query(sql).execute();
         var result = await  db.query(`SELECT * FROM ${tableName ?? `his.changes`} ORDER BY ${orderBy ?? `cha_schema, cha_table, cha_new_pk, cha_column, cha_new_value`}`).fetchAll();
         discrepances.showAndThrow(result.rows, expectedValues, {duckTyping:true});
-    };
+    }
     var commonExpect={
         cha_schema:'tri',
         cha_old_pk:null,

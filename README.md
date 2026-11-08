@@ -2,9 +2,12 @@
 Triggers for postgres
 
 
-![extending](https://img.shields.io/badge/stability-extending-orange.svg)
 [![npm-version](https://img.shields.io/npm/v/pg-triggers.svg)](https://npmjs.org/package/pg-triggers)
 [![downloads](https://img.shields.io/npm/dm/pg-triggers.svg)](https://npmjs.org/package/pg-triggers)
+[![build](https://github.com/emilioplatzer/pg-triggers/actions/workflows/build-and-test.yml/badge.svg)](https://github.com/emilioplatzer/pg-triggers/actions/workflows/build-and-test.yml)
+[![coverage](https://img.shields.io/coveralls/emilioplatzer/pg-triggers/master.svg)](https://coveralls.io/r/emilioplatzer/pg-triggers)
+[![sonar](https://sonarcloud.io/api/project_badges/measure?project=emilioplatzer_pg-triggers&metric=alert_status)](https://sonarcloud.io/summary/overall?id=emilioplatzer_pg-triggers)
+[![qa-control](https://github.com/emilioplatzer/pg-triggers/actions/workflows/qa-control.yml/badge.svg)](https://github.com/emilioplatzer/pg-triggers/actions/workflows/qa-control.yml)
 
 
 language: ![English](https://raw.githubusercontent.com/codenautas/multilang/master/img/lang-en.png)
@@ -35,4 +38,3 @@ $ npm test
 ## License
 
 [MIT](LICENSE)
-
