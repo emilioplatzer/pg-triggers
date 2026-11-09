@@ -26,7 +26,7 @@
   "scripts": {
     "test": "mocha --reporter spec --bail --check-leaks test/",
     "test-nc": "mocha --reporter spec --bail --check-leaks --no-colors test/",
-    "test-ci": "nyc node_modules/mocha/bin/_mocha --report lcovonly -- --reporter spec --check-leaks test/"
+    "test-ci": "nyc --reporter=lcov --reporter=text mocha --reporter spec --check-leaks test/"
   },
   "qa-control": {
     "coverage": 90,

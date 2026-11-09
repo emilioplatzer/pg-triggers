@@ -196,6 +196,20 @@ describe("audit triggers", async ()=>{
     })
 });
 
+describe("historyScripts", ()=>{
+    var assert = require("assert"); // eslint-disable-line global-require
+    var fs = require("fs"); // eslint-disable-line global-require
+    it("lists the scripts of the history of changes, in the order they run", ()=>{
+        assert.deepStrictEqual(
+            pgTriggers.historyScripts.map(path => path.split(/[\\/]/).pop()),
+            ['recreate-his.sql', 'table-changes.sql', 'function-changes-trg.sql', 'enance.sql']
+        );
+    });
+    it("gives the paths of files that exist", ()=>{
+        pgTriggers.historyScripts.forEach(path => assert.ok(fs.existsSync(path), path));
+    });
+});
+
 describe("dumpMaxIdTrigger firstId", ()=>{
     var assert = require("assert"); // eslint-disable-line global-require
     it("uses a numeric firstId", async ()=>{
